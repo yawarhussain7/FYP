@@ -6,8 +6,20 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 def login(request):
+    if request.method == "POST":
+        data = request.POST
 
+        username = data.get('username')
+        password = data.get('password')
 
+        user = authenticate(request,username = username , password = password)
+
+        if user is not None:
+           messages.success(request,"Login successfully...")
+           return HttpResponseRedirect('/')
+
+        messages.error(request,"invlid username or password")
+        return HttpResponseRedirect(request.path_info)
     
     return render(request,"account/login.html")
 
