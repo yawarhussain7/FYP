@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block external_css%}
+<link rel="stylesheet" href="{% static 'css/account/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login_form ">
+  <form class="mx-auto card p-4 col-4 m-5 shadow-lg bg-dark ">
+    <h1>Login</h1>
+    {% include "alert.html" %}
+    <div class="form-group ">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="form-group mt-2">
+      <label for="exampleInputPassword1"><span>If you have not account : <a
+            href="{% url 'register' %}">Register</a></span></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

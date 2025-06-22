@@ -1,0 +1,43 @@
+.main-home {
+    border: 1px solid;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 90vh;
+}
+
+.image-section {
+    height: 40vh;
+    width: 20%;
+
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+.user-details {
+    border: 1px solid;
+    padding: 10px;
+    width: 60%;
+    background: aliceblue;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.user-details span {
+    /* border: 1px solid red; */
+    background-color: rgb(192, 192, 192);
+    padding: 20px 50px;
+    font-family: system-ui;
+    font-weight: 600;
+    margin: 10px 20px;
+    margin: 10px 20px;
+    border-radius: 30px;
+}
