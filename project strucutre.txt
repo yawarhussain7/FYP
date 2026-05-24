@@ -1,0 +1,94 @@
+e-academy/                          # Root Project Folder
+│
+├── backend/                        # BACKEND SERVICE (Node.js + Express)
+│   ├── config/                     # Configuration files (DB, Cloudinary, Stripe, AI)
+│   │   ├── db.js                   # MongoDB connection logic
+│   │   ├── cloudinary.js           # Cloudinary storage setup for resource PDFs
+│   │   └── stripe.js               # Stripe API initialization
+│   │
+│   ├── controllers/                # Logic handlers for processing data
+│   │   ├── authController.js       # Login, Signup, JWT handling
+│   │   ├── resourceController.js   # Resource uploading and retrieval
+│   │   ├── aiController.js         # Gemini/OpenAI prompt logic for E-Sheet grading
+│   │   ├── paymentController.js    # Stripe payments & webhooks logic
+│   │   ├── scholarshipController.js# CRUD for scholarship updates
+│   │   └── messageController.js    # Chat history & text room queries
+│   │
+│   ├── middleware/                 # Security, Validation, and Permission guards
+│   │   ├── authMiddleware.js       # Protects routes (Verifies JWT tokens)
+│   │   ├── roleMiddleware.js       # Restricts admin paths (checks if Admin/Teacher)
+│   │   └── uploadMiddleware.js     # Multer config for file size/format filtering
+│   │
+│   ├── models/                     # Database Schemas (MongoDB / Mongoose)
+│   │   ├── User.js                 # Student, Teacher, and Admin user metrics
+│   │   ├── Resource.js             # Syllabus PDFs, past papers, notes data
+│   │   ├── Assessment.js           # E-sheet grading records & AI generated text
+│   │   ├── Transaction.js          # Invoices, Payment history metadata
+│   │   ├── Scholarship.js          # Financial aid profiles
+│   │   └── Message.js              # Peer-to-peer and community chat logs
+│   │
+│   ├── routes/                     # API endpoint definitions mapped to controllers
+│   │   ├── authRoutes.js           # /api/auth/*
+│   │   ├── resourceRoutes.js       # /api/resources/*
+│   │   ├── aiRoutes.js             # /api/ai-assessment/*
+│   │   ├── paymentRoutes.js        # /api/payments/*
+│   │   └── scholarshipRoutes.js    # /api/scholarships/*
+│   │
+│   ├── services/                   # External APIs & reusable micro-services
+│   │   ├── aiService.js            # Encapsulated AI API payload engine
+│   │   └── socketService.js        # Web Socket (Socket.io) handlers for messaging
+│   │
+│   ├── tests/                      # SQA test suits
+│   │   ├── auth.test.js            # Automated endpoint testing (Jest/Supertest)
+│   │   └── resource.test.js
+│   │
+│   ├── .env                        # Private Environment keys (MONGO_URI, STRIPE_SECRET)
+│   ├── server.js                   # Application bootstrap entry point
+│   └── package.json                # Backend dependency tree
+│
+├── frontend/                       # FRONTEND APPLICATION (React.js + Vite/CRA)
+│   ├── public/                     # Static media files (logos, system assets)
+│   │
+│   ├── src/                        # Core codebase root
+│   │   ├── assets/                 # Reusable local visuals, icons, background stylings
+│   │   │
+│   │   ├── components/             # Reusable UI Blocks (Global/Shared)
+│   │   │   ├── Navbar.jsx          # Upper platform navigation panel
+│   │   │   ├── Sidebar.jsx         # Custom navigation side-bars depending on User Role
+│   │   │   ├── ProtectedRoute.jsx  # Guards frontend views from unauthenticated access
+│   │   │   └── LoadingSpinner.jsx  # Reusable UI buffering placeholders
+│   │   │
+│   │   ├── context/                # Global state management systems
+│   │   │   ├── AuthContext.jsx     # Controls global application login states & user tokens
+│   │   │   └── ThemeContext.jsx    # Light / Dark mode layout parameters
+│   │   │
+│   │   ├── hooks/                  # Custom React hooks
+│   │   │   └── useFetch.js         # Abstracted custom Axios/Fetch requests handler
+│   │   │
+│   │   ├── pages/                  # Views mapped exactly to functional application pages
+│   │   │   ├── Auth/               # Login, Sign-up screens
+│   │   │   ├── StudentDashboard/   # Main landing screen for logged-in students
+│   │   │   ├── TeacherDashboard/   # Workspace panel for educators
+│   │   │   ├── AdminPanel/         # System oversight tools, AI review panel, user blocks
+│   │   │   ├── Resources/          # Material lists, Upload fields, Document viewers
+│   │   │   ├── AIAssessment/       # Grade check results view, uploaded E-sheets
+│   │   │   ├── Payments/           # Pricing models, Stripe checkout forms, Invoices
+│   │   │   └── Scholarships/       # Board announcements, financial aid application list
+│   │   │
+│   │   ├── services/               # Central API communication client wrappers
+│   │   │   └── api.js              # Unified Axios controller configuration base
+│   │   │
+│   │   ├── utils/                  # Helper utilities and text format filters
+│   │   │   └── formatDate.js       # Standardized time and calendar parsers
+│   │   │
+│   │   ├── App.jsx                 # Direct routing map layout (React Router)
+│   │   ├── main.jsx                # DOM mounting entry point
+│   │   └── index.css               # Base Tailwind CSS rules / Global styling adjustments
+│   │
+│   ├── .env                        # Local frontend environment assets (VITE_API_URL)
+│   ├── package.json                # Frontend package registry tracking
+│   └── vite.config.js              # Standard tool build configuration setup
+│
+├── .gitignore                      # Instructs git to completely disregard .env folders and node_modules
+├── README.md                       # Comprehensive guide outlining project initiation configurations
+└── Project_Scope_Document.docx     # Project documentation storage
