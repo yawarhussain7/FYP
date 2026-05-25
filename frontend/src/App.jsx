@@ -1,41 +1,24 @@
 import React, { useState } from 'react'
+import {  Route, Routes } from 'react-router-dom'
+
 import Login from './pages/Login'
-import { Routes,Route} from 'react-router-dom'
+import Protected_Route from './Router/Protected_Route'
+import Register from './pages/Register'
 
-import AdminDashboard from './pages/Admin/AdminDashboard'
-import ResourceModeration from './pages/Admin/ResourceModeration'
-import Layout from './components/Admin/Layout'
-import ReportedContent from './pages/Admin/ReportedContent'
-import UserManagement from './pages/Admin/UserManagement'
+import AdminRoute from './Router/AdminRoute'
+import StudentRoute from './Router/StudentRoute'
 
-import StudentLayout from './components/Students/StudentLayout'
-import Dashboard from './pages/Students/Dashboard'
+
 const App = () => {
-  
-  return (
+  const [userRole, set_userRole] = useState('')
+  return(
     <>
-      <Routes>
-        <Route path='/' element={<h1> Helo</h1>}/>
-        <Route path='auth/login' element={<Login/>}/>
+    <Routes>
+      <Route path='auth/SignIn' element={<Login/>}/>
+      <Route path='auth/SignUp' element={<Register/>}/>
 
-        <Route path="/student/*" element={<StudentLayout/>}>
-          <Route path="dashboard" element={<Dashboard/>}/>
-          
-          <Route path="*" element={<h1>404 Not found </h1>}/>
-        </Route>
-
-        <Route path="/admin/*" element={<Layout/>}>
-        
-          <Route path='dashboard' element={<AdminDashboard/>}/>
-          <Route path='resource-moderation' element={<ResourceModeration/>}/>
-          <Route path='reports' element={<ReportedContent/>}/>
-          <Route path='users' element={<UserManagement/>}/>
-          <Route path="*" element={"404 Not Found"} />
-
-        </Route>
-
-      </Routes>
-     
+      <Route path='*' element={<h1> 404 Page not found</h1>}/>
+    </Routes>
     </>
   )
 }
