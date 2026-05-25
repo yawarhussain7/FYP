@@ -113,7 +113,7 @@ export default function Login({set_userRole}) {
           <div className="relative flex justify-center text-xs">
             <span className="bg-transparent px-2 text-slate-500 border-t border-slate-800/60 w-full pt-6 text-center">
               Don't have an account?{' '}
-              <Link to="auth/SignUp" className="font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+              <Link to="/auth/SignUp" className="font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
                 Register as Student
               </Link>
             </span>

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-const protect = (req,res,next)=>{
+const protected_route = (req,res,next)=>{
     let token;
 
     if(req.headers.authorization &&  req.headers.authorization.startsWith("Bearer")){

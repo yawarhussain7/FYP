@@ -47,8 +47,8 @@ The system helps students and teachers manage courses, assignments, quizzes, stu
 ```bash
 EAcademy/
 │
-├── client/          # Frontend
-├── server/          # Backend
+├── frontend/          # Frontend
+├── backend/          # Backend
 ├── database/        # Database files
 ├── docs/            # Documentation
 ├── screenshots/     # Project screenshots

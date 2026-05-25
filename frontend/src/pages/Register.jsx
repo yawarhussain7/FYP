@@ -10,7 +10,7 @@ import {
     EyeOff,
     ArrowRight
 } from 'lucide-react'; // Substituted icons for clarity, install via 'npm i lucide-react'
-
+import {Link} from 'react-router-dom'
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
@@ -134,7 +134,7 @@ export default function Register() {
                         </div>
 
                         {/* School Name Field */}
-                        <div>
+                        <div className={formData.role && formData.role.toLowerCase() === 'admin' ? 'hidden' : 'block'}>
                             <label className="block text-sm font-medium text-slate-300 mb-1.5 ml-1">
                                 School Name
                             </label>
@@ -215,9 +215,9 @@ export default function Register() {
                 {/* Footer Link */}
                 <div className="mt-8 text-center text-xs text-slate-500">
                     Already have an account?{' '}
-                    <a href="/login" className="text-blue-500 hover:underline font-medium">
+                    <Link to="/auth/SignIn" className="text-blue-500 hover:underline font-medium">
                         Sign In
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
