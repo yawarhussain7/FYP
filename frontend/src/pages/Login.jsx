@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
-export default function Login() {
+export default function Login({set_userRole}) {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('alex@example.com');
   const [password, setPassword] = useState('password123');
@@ -9,6 +10,10 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Logging in with:', { email, password });
+    if(email == 'admin@123gmail.com' && password == 'admin123')
+    {
+      set_userRole('admin')
+    }
   };
 
   return (
@@ -108,9 +113,9 @@ export default function Login() {
           <div className="relative flex justify-center text-xs">
             <span className="bg-transparent px-2 text-slate-500 border-t border-slate-800/60 w-full pt-6 text-center">
               Don't have an account?{' '}
-              <a href="#" className="font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+              <Link to="auth/SignUp" className="font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
                 Register as Student
-              </a>
+              </Link>
             </span>
           </div>
         </div>
