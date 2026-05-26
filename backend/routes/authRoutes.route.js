@@ -5,8 +5,8 @@ import {protected_route} from '../Middleware/authMiddleware.middleware.js'
 
 const router = express.Router()
 
-router.post('/SignIn',login)
-router.post('/SignUp', register)
+router.post('/signIn',login)
+router.post('/signUp', register)
 
 
 

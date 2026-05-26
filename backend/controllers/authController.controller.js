@@ -1,13 +1,24 @@
-import authService from "../services/authService.js";
+import authService from "../services/authService.service.js"
 
 const register = async(req,res)=>{
+        console.log("BODY:", req.body)
+console.log("QUERY:", req.query)
+    
+    if(!req.body?.password || req.body.password.length < 6)
+    {
+        return res.status(400).json({message: "Password must be at least 6 characters"})
+    }
+   
+    const {name,email,password,school,role} = req.body
+
+
     try{
         const data = await authService.register_page(
-            req.body.name,
-            req.body.email,
-            req.body.password,
-            req.body.school,
-            req.body.role
+            name,
+            email,
+            password,
+            school,
+            role
         )
         res.status(200).json(data)
 

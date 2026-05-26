@@ -1,9 +1,10 @@
 import bycrypt from 'bcryptjs'
 import generateJWT from '../utils/generateJWT.js'
-import StudentSchema from '../Model/UserModel/Users.js'
+import StudentSchema from '../Model/UserModel/Users.model.js'
 
 //Resgister page
 const register_page = async (name,email,password,school,role)=>{
+   
     const Exist_User = await StudentSchema.findOne({email})
 
     if(Exist_User){
@@ -25,7 +26,7 @@ const register_page = async (name,email,password,school,role)=>{
         email:user.email,
         role:user.role,
         school:user.school,
-        token: generateJWT(user._id, user.role)
+        token: generateJWT(user)
     }
 }
 
@@ -50,7 +51,7 @@ const login_page = async (email,password)=>{
         email:user.email,
         role:user.role,
         school:user.school,
-        token: generateJWT(user._id, user.role)
+        token: generateJWT(user)
     }
 }
 
